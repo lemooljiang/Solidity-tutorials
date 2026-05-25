@@ -3,72 +3,77 @@
 ![solidity](./images/solidity6.jpg)
 
 
-- [下载与资源](#下载与资源)
-- [数据类型](#数据类型)
-- [值类型](#值类型)
-- [引用类型](#引用类型)
-- [变量修饰符](#变量修饰符)
-- [数据类型小结](#数据类型小结)
-- [货币单位](#货币单位)
-- [伪随机数](#伪随机数)
-- [时间单位](#时间单位)
-- [全局变量和函数](#全局变量和函数)
-- [函数](#函数)
-- [接受函数和回退函数](#接受函数和回退函数)
-- [访问权限](#访问权限)
-- [函数修饰符](#函数修饰符)
-- [发送以太币的方法](#发送以太币的方法)
-- [存储位置](#存储位置)
-- [memory和storage的区别](#memory和storage的区别)
-- [函数修饰器modifier](#函数修饰器modifier)
-- [函数选择器Selector](#函数选择器selector)
-- [导入其他源文件](#导入其他源文件)
-- [库](#库)
-- [错误异常](#错误异常)
-- [自定义错误](#自定义错误)
-- [delete](#delete)
-- [销毁合约](#销毁合约)
-- [事件Events](#事件events)
-- [合约元素](#合约元素)
-- [第一个合约](#第一个合约)
-- [简单代币合约](#简单代币合约)
-- [ERC20](#erc20)
-- [以太坊+IPFS数据存储可行方案](#以太坊ipfs数据存储可行方案)
-- [事件日志event](#事件日志event)
-- [call和delegatecall](#call和delegatecall)
-- [底层调用calldata](#底层调用calldata)
-- [抽象合约](#抽象合约)
-- [接口](#接口)
-- [interface id](#interface-id)
-- [ABI](#abi)
-- [数学和哈希函数](#数学和哈希函数)
-- [签名参数](#签名参数)
-- [验证签名](#验证签名)
-- [投票合约](#投票合约)
-- [转帐合约](#转帐合约)
-- [批量转帐合约](#批量转帐合约)
-- [ICO合约](#ico合约)
-- [买卖合约](#买卖合约)
-- [SharesPool挖矿算法](#sharespool挖矿算法)
-- [权限控制](#权限控制)
-- [判断字符串相等](#判断字符串相等)
-- [virtual与override](#virtual与override)
-- [super关键字](#super关键字)
-- [tx.origin](#txorigin)
-- [factory](#factory)
-- [存证合约](#存证合约)
-- [SafeMath](#safemath)
-- [storage类型的坑点](#storage类型的坑点)
-- [一次性获取数组或结构体的所有数据](#一次性获取数组或结构体的所有数据)
-- [重入攻击](#重入攻击)
-- [防御重入攻击](#防御重入攻击)
-- [汇编assembly](#汇编assembly)
-- [代理合约升级](#代理合约升级)
-- [multicall](#multicall)
-- [节约gas](#节约gas)
-- [merkle tree proof](#merkle-tree-proof)
-- [graph](#graph)
-- [监听合约事件](#监听合约事件)
+<!-- TOC -->
+
+- [<center>Solidity</center>](#centersoliditycenter)
+  - [下载与资源](#下载与资源)
+  - [数据类型](#数据类型)
+  - [值类型](#值类型)
+  - [引用类型](#引用类型)
+  - [变量修饰符](#变量修饰符)
+  - [数据类型小结](#数据类型小结)
+  - [货币单位](#货币单位)
+  - [伪随机数](#伪随机数)
+  - [时间单位](#时间单位)
+  - [全局变量和函数](#全局变量和函数)
+  - [函数](#函数)
+  - [接受函数和回退函数](#接受函数和回退函数)
+  - [访问权限](#访问权限)
+  - [函数修饰符](#函数修饰符)
+  - [发送以太币的方法](#发送以太币的方法)
+  - [存储位置](#存储位置)
+  - [memory和storage的区别](#memory和storage的区别)
+  - [函数修饰器modifier](#函数修饰器modifier)
+  - [函数选择器Selector](#函数选择器selector)
+  - [导入其他源文件](#导入其他源文件)
+  - [库](#库)
+  - [错误异常](#错误异常)
+  - [自定义错误](#自定义错误)
+  - [delete](#delete)
+  - [销毁合约](#销毁合约)
+  - [事件Events](#事件events)
+  - [合约元素](#合约元素)
+  - [第一个合约](#第一个合约)
+  - [简单代币合约](#简单代币合约)
+  - [ERC20](#erc20)
+  - [以太坊+IPFS数据存储可行方案](#以太坊ipfs数据存储可行方案)
+  - [call和delegatecall](#call和delegatecall)
+  - [底层调用calldata](#底层调用calldata)
+  - [抽象合约](#抽象合约)
+  - [接口](#接口)
+  - [interface id](#interface-id)
+  - [ABI](#abi)
+  - [数学和哈希函数](#数学和哈希函数)
+  - [签名参数](#签名参数)
+  - [验证签名](#验证签名)
+  - [投票合约](#投票合约)
+  - [转帐合约](#转帐合约)
+  - [批量转帐合约](#批量转帐合约)
+  - [ICO合约](#ico合约)
+  - [买卖合约](#买卖合约)
+  - [SharesPool挖矿算法](#sharespool挖矿算法)
+  - [权限控制](#权限控制)
+  - [判断字符串相等](#判断字符串相等)
+  - [virtual与override](#virtual与override)
+  - [super关键字](#super关键字)
+  - [tx.origin](#txorigin)
+  - [factory](#factory)
+  - [存证合约](#存证合约)
+  - [storage类型的坑点](#storage类型的坑点)
+  - [一次性获取数组或结构体的所有数据](#一次性获取数组或结构体的所有数据)
+  - [重入攻击](#重入攻击)
+  - [防御重入攻击](#防御重入攻击)
+  - [汇编assembly](#汇编assembly)
+  - [代理合约升级](#代理合约升级)
+  - [multicall](#multicall)
+  - [节约gas](#节约gas)
+  - [merkle tree proof](#merkle-tree-proof)
+  - [graph](#graph)
+  - [监听合约事件](#监听合约事件)
+  - [过滤事件以确认链上交易](#过滤事件以确认链上交易)
+  - [A合约调用B合约的四种方法](#a合约调用b合约的四种方法)
+
+<!-- /TOC -->
 
 
 ## 下载与资源
@@ -85,7 +90,7 @@
 [ASCii码表 |](https://tool.ip138.com/ascii_code/)
 [chainlist |](https://chainlist.org/)
 [水龙头 |](https://faucets.chain.link/)
-Solidity - 0.8.30
+Solidity - 0.8.35
 
 ## 数据类型
 ![类型](./images/basic.jpg)
@@ -886,26 +891,6 @@ contract TutorialToken is ERC20 {
 ![示意图](./images/eth+ipfs.jpg)
 
 
-## 事件日志event
-```js
-curl https://ropsten.infura.io/v3/c9730c0636874b699e22887189adabc8 \
-    -X POST \
-    -H "Content-Type: application/json" \
-    -d '{"jsonrpc":"2.0","method":"eth_getLogs","params":[{"blockHash": "
-0x3e67aab36f8b32fcfe7518053d2e0c743af9a73f36bd14e39b33632e2bf8b367", "topics":["0x241ea03ca20251805084d27d4440371c34a0b85ff108f6bb5611248f73818b80"]}],"id":1}'
-
-//实际上事件支持过滤器，可以从所有的区块中过滤出符合要求的事件，如：
-var instructorEvent = info.Instructor({}, {fromBlock: 0, toBlock: 'latest'});
-
-//或者是，要过滤出年龄 28 岁的记录，可以这样：
-var instructorEvent = info.Instructor({ 'age': 28});
-
-//比如，我们要获取到代币合约中，所有的转账记录， 就可以使用：
-var transferEvent = token.Transfer({}, {fromBlock: 0, toBlock: 'latest'})
-var transferEvent.watch(function(error, result){
-// handle result.args.from  result.args.to 
-```
-
 ## call和delegatecall
 调用另一个合约中的函数，主要是两个方法：call 和 delegatecall。但推荐用接口调用！
 call 会切换到被调合约中去执行方法，会切换上下文。msg.sender是主调合约地址。
@@ -1333,32 +1318,6 @@ contract Factory {
 [单个存证 ｜](./contract/evidence/evidence.sol)
 [存证工厂合约](./contract/evidence/factory.sol)
 
-## SafeMath
-solidity在0.8版本以前需要引入SafeMath库以避免计算时溢出，但在0.8版本以后自身已经集成了，则无需再引入。
-```js
-//SafeMath是从左到右开始计算的： + add  - sub  * mul  / div
-uint a = 2;
-uint b = 5;
-uint c = 23;
-(a+b)*c -> a.add(b).mul(c)
-
-//0.8版本以后
-uint x = 0;
-x--;  //出错，会回滚
-
-unchecked { ... }不检查溢出,
-  uint x = 0;
-  unchecked { x--; }  //返回最大值 type(uint).max
-
-uint a = 2;
-uint b = 5;
-uint c = 23;
-return a + b * c;   ->117
-return (a + b) * c; ->161
-return a * b + c;   ->33
-return  b / a + c;  ->25
-return c / (a + b); ->3 
-```
 
 ## storage类型的坑点
 ```js
@@ -1590,4 +1549,116 @@ e.watch(function(err,	result)	{
     console.log(err)
   }	
 })
+```
+
+
+## 过滤事件以确认链上交易
+```js
+/*
+增加的polygon充值方式
+*/
+//polygon网络配置
+const pol_url = "https://rpc-mainnet.matic.quiknode.pro"
+// const pol_url = "https://rpc-mumbai.maticvigil.com"
+const abi = [
+      "event Transfer(address indexed from, address indexed to, uint value)",
+      "function transfer(address recipient, uint256 amount) external returns (bool)"
+    ]
+const usdtAddr = '0xaA61b68301278Da4e001d2cF7F8b2202aed6347c'
+const provider = new ethers.JsonRpcProvider(pol_url)
+const usdtContract = new ethers.Contract(usdtAddr, abi, provider)
+const toB = "0x3b2dBD900E9B23E94270ADe010616B9A28293A87"
+
+try {
+  //过滤事件以确定上链成功
+  let i = 0
+  let checkConfirm = async ()=> {
+    i++
+    console.log(1122,i)
+    if(i>9){
+      //循环10
+      clearInterval(timer)
+      console.log(4411)
+      return 
+    }
+    //过滤事件，每3秒1次，10次
+    let results = await usdtContract.queryFilter('Transfer', -9)  //16秒 9 
+    if(results.length == 0){
+      console.log(435, "results.length",  results.length)
+      return
+    }
+    console.log(66, "results.length", results.length)
+    let checkEvent = async ()=> {
+      return new Promise(resolve => {
+        for(let t = 0; t < results.length; t++ ){
+          if(hash === results[t].transactionHash && results[t].args[1] == toB){
+            clearInterval(timer)
+            console.log(33, results[t].args)
+            let amount = ethers.formatEther(results[t].args[2])
+            let payAddr = results[t].args[0]
+            resolve(['ok', amount, payAddr])
+          }
+        }
+        resolve(["false", 0, 0])
+      })
+    }
+    let event = await checkEvent()
+    if(event[0] === 'ok'){
+      //业务逻辑
+    } 
+  }
+  //设置定时器以更新 5秒
+  let timer = setInterval(checkConfirm, 5000)
+} catch (error) {
+  console.log(1112, error)
+}
+```
+
+## A合约调用B合约的四种方法
+1.合约对象，2.继承，3.接口， 4.低级调用，call delegatecall
+```js
+1. 合约对象
+contract FuncAdd {
+   uint x = 263;
+   function add(uint x, uint y) external returns(uint) { 
+      return x;
+   };
+}
+
+contract TestAdd {
+    //用合约地址来实例化接口
+    FuncAdd t = FuncAdd(0x3dA5048CE9384a35fF4F3AAF0B4804114e584039);
+    function test(uint x, uint y) public returns(uint){
+        return t.add(x, y);
+    }
+}
+
+2.继承
+继承A合约中的方法，可以直接调用。
+contract A {
+    uint public x;
+    function setValue(uint _x) public {
+        x = _x;
+    }
+}
+
+contract B is A {
+    function modify(uint _y) public {
+        setValue(_y); //可以直接调用A合约中的方法
+    }
+}
+
+3. 接口
+接口有点类似抽象合约的功能，可用于两个合约间的调用。是非侵入式接口，也就是不用显式的调用接口。在ERC20合约中比较常见。
+注意：B中引用A的接口，A的函数仍会在A的环境中执行。
+interface IFuncAdd {
+    function add(uint x, uint y) external returns(uint);
+}
+contract TestAdd {
+    //用合约地址来实例化接口
+    IFuncAdd t = IFuncAdd(0x3dA5048CE9384a35fF4F3AAF0B4804114e584039);
+    function test(uint x, uint y) public returns(uint){
+        return t.add(x, y);
+    }
+}
 ```
